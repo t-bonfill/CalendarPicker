@@ -248,7 +248,7 @@ export function makeStyles(params) {
       borderRadius: 100,
       backgroundColor: TODAY_BG_COLOR,
       alignSelf: 'center',
-      bottom: -7
+      bottom: -5
     },
 
     yearHeaderMainText: {
