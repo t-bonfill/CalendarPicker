@@ -35,7 +35,8 @@ export default function Day(props) {
     disabledDatesTextStyle,
     minRangeDuration,
     maxRangeDuration,
-    enableDateChange
+    enableDateChange,
+    showTodayDot
   } = props;
 
   const thisDay = moment({year, month, day, hour: 12 });
@@ -115,7 +116,7 @@ export default function Day(props) {
   if (!dateOutOfRange || isThisDaySameAsSelectedStart || isThisDaySameAsSelectedEnd || isThisDateInSelectedRange) {
     // set today's style
     let isToday = thisDay.isSame(today, 'day');
-    if (isToday) {
+    if (isToday && !showTodayDot) {
       computedSelectedDayStyle = styles.selectedToday;
       // todayTextStyle prop overrides selectedDayTextColor (created via makeStyles)
       selectedDayTextStyle = [todayTextStyle || styles.selectedDayLabel, propSelectedDayTextStyle];
@@ -202,9 +203,10 @@ export default function Day(props) {
             disabled={!enableDateChange}
             style={[custom.style, computedSelectedDayStyle, selectedDayStyle ]}
             onPress={() => onPressDay({year, month, day}) }>
-            <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}>
-              { day }
-            </Text>
+            <View style={styles.relative}>
+              <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}>{ day }</Text>
+              {isToday && showTodayDot && (<Text style={styles.todayDot}></Text>)}
+            </View>
           </TouchableOpacity>
         </View>
       );

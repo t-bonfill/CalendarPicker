@@ -249,6 +249,7 @@ DaysGridView.propTypes = {
   selectedRangeStartStyle: stylePropType,
   selectedRangeStyle: stylePropType,
   selectedRangeEndStyle: stylePropType,
+  showTodayDot: PropTypes.bool,
   todayTextStyle: stylePropType,
   selectedDayTextStyle: stylePropType,
   customDatesStyles: PropTypes.oneOfType([

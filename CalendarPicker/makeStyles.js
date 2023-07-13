@@ -237,6 +237,20 @@ export function makeStyles(params) {
       padding: 20*scaler,
     },
 
+    relative: {
+      position: 'relative'
+    },
+
+    todayDot: {
+      position: 'absolute',
+      width: 5,
+      height: 5,
+      borderRadius: 100,
+      backgroundColor: TODAY_BG_COLOR,
+      alignSelf: 'center',
+      bottom: -7
+    },
+
     yearHeaderMainText: {
       fontSize: 16*scaler,
       color: '#000',
