@@ -492,6 +492,7 @@ export default class CalendarPicker extends Component {
       onMonthChange,
       scrollable,
       horizontal,
+      scrollViewDecelerationRate
     } = this.props;
 
     let content;
@@ -589,6 +590,7 @@ export default class CalendarPicker extends Component {
               updateMonthYear={this.updateMonthYear}
               onMonthChange={onMonthChange}
               horizontal={horizontal}
+              scrollViewDecelerationRate={scrollViewDecelerationRate}
             />
             :
             this.renderMonth(renderMonthParams)

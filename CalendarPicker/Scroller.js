@@ -19,6 +19,7 @@ export default class CalendarScroller extends Component {
     renderMonthParams: PropTypes.object.isRequired,
     minDate: PropTypes.any,
     maxDate: PropTypes.any,
+    scrollViewDecelerationRate: PropTypes.number,
     maxSimultaneousMonths: PropTypes.number,
     horizontal: PropTypes.bool,
     updateMonthYear: PropTypes.func,
@@ -275,6 +276,7 @@ export default class CalendarScroller extends Component {
           isHorizontal={this.props.horizontal}
           scrollViewProps={{
             showsHorizontalScrollIndicator: false,
+            decelerationRate: this.props.scrollViewDecelerationRate || 'normal',
             snapToInterval: this.props.horizontal ? width : height,
           }}
         />
