@@ -20,7 +20,9 @@ export default function HeaderControls(props) {
     onPressYear,
     months,
     previousComponent,
+    hidePreviousComponent,
     nextComponent,
+    hideNextComponent,
     previousTitle,
     nextTitle,
     previousTitleStyle,
@@ -49,14 +51,14 @@ export default function HeaderControls(props) {
 
   return (
     <View style={[styles.headerWrapper, headerWrapperStyle]}>
-      <Controls
+      {!hidePreviousComponent && (<Controls
         disabled={disablePreviousMonth}
         label={previousTitle}
         component={previousComponent}
         onPressControl={onPressPrevious}
         styles={styles.previousContainer}
         textStyles={[styles.navButtonText, textStyle, previousTitleStyle]}
-      />
+      />)}
       <View style={[styles.monthYearHeaderWrapper,monthYearHeaderWrapperStyle]}>
         <TouchableOpacity onPress={onPressMonth}>
           <Text style={[styles.monthHeaderMainText, textStyle, monthTitleStyle]} {...accessibilityProps}>
@@ -69,14 +71,14 @@ export default function HeaderControls(props) {
           </Text>
         </TouchableOpacity>
       </View>
-      <Controls
+      {!hideNextComponent && (<Controls
         disabled={disableNextMonth}
         label={nextTitle}
         component={nextComponent}
         onPressControl={onPressNext}
         styles={styles.nextContainer}
         textStyles={[styles.navButtonText, textStyle, nextTitleStyle]}
-      />
+      />)}
     </View>
   );
 }

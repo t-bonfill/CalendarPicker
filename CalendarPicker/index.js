@@ -360,7 +360,7 @@ export default class CalendarPicker extends Component {
     this.setState((state) => ({
       selectedStartDate: null,
       selectedEndDate: null,
-      renderMonthParams: { 
+      renderMonthParams: {
         ...state.renderMonthParams,
         selectedStartDate: null,
         selectedEndDate: null,
@@ -421,7 +421,7 @@ export default class CalendarPicker extends Component {
     // prop, or the current month & year that has been selected.
     let _initialDate = Number.isInteger(currentMonth) && Number.isInteger(currentYear) &&
         moment({ year: currentYear, month: currentMonth, hour: 12 });
-    _initialDate = _initialDate || initialDate;
+    _initialDate = _initialDate || moment(initialDate);
     let firstScrollerMonth = _initialDate.clone().subtract(numMonths/2, 'months');
     if (minDate && restrictMonthNavigation && firstScrollerMonth.isBefore(minDate, 'month')) {
       firstScrollerMonth = moment(minDate);
@@ -470,7 +470,10 @@ export default class CalendarPicker extends Component {
       weekdays,
       months,
       previousComponent,
+      hidePreviousComponent,
       nextComponent,
+      nextComponentAction,
+      hideNextComponent,
       previousTitle,
       nextTitle,
       previousTitleStyle,
@@ -540,12 +543,14 @@ export default class CalendarPicker extends Component {
             currentYear={currentYear}
             initialDate={moment(initialDate)}
             onPressPrevious={this.handleOnPressPrevious}
-            onPressNext={this.handleOnPressNext}
+            onPressNext={nextComponentAction || this.handleOnPressNext}
             onPressMonth={this.handleOnPressMonth}
             onPressYear={this.handleOnPressYear}
             months={months}
             previousComponent={previousComponent}
+            hidePreviousComponent={hidePreviousComponent}
             nextComponent={nextComponent}
+            hideNextComponent={hideNextComponent}
             previousTitle={previousTitle}
             nextTitle={nextTitle}
             previousTitleStyle={previousTitleStyle}
